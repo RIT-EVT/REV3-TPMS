@@ -1,0 +1,19 @@
+# Build files
+build*/
+html/
+latex/
+compile_commands.json
+cmake-build-debug/
+
+# Virtual environments
+venv/
+
+# IDE Files
+.idea/
+.vscode/
+.cache/
+.settings/
+.clangd
+
+# macOS files
+.DS_Store
