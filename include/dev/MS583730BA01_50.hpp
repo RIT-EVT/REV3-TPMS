@@ -26,6 +26,13 @@ namespace TPMS {
          * @return pressure in mbar
          */
         float readPressure();
+
+        /**
+         * Gets the temperature from the MS5837
+         * @return temperature in degrees Celsius
+         */
+        float readTemperature();
+
     private:
         // 7-bit address for the I2C
         static constexpr uint8_t I2C_ADDRESS = 0x76 << 1;
