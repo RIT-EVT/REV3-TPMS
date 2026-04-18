@@ -47,7 +47,7 @@ include(${EVT_CORE_DIR}/cmake/evt-core_install.cmake)
 ###############################################################################
 # Project Setup
 ###############################################################################
-set(BOARD_LIB_NAME BOARD_NAME)
+set(BOARD_LIB_NAME REV3_TPMS)
 if("${BOARD_LIB_NAME}" STREQUAL BOARD_NAME)
     message(FATAL_ERROR
             "You must set the template project name in the top-level CMakeLists.txt")
@@ -60,7 +60,14 @@ project(${BOARD_LIB_NAME}
         LANGUAGES CXX C
         )
 
-add_library(${PROJECT_NAME} STATIC)
+add_library(${PROJECT_NAME} STATIC
+        include/dev/MS583730BA01_50.hpp
+        include/dev/BGM220.hpp
+        include/dev/TPMS_CAN.hpp
+        src/dev/BGM220.cpp
+        src/dev/MS583730BA01_50.cpp
+        src/dev/TPMS_CAN.cpp
+        include/dev/MS583730BA01_50.hpp)
 
 # Add sources
 target_sources(${PROJECT_NAME} PRIVATE
