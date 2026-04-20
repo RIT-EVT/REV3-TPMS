@@ -12,7 +12,7 @@
 namespace IO = core::io;
 namespace log = core::log;
 
-namespace TPMS {
+namespace TPMS::dev {
     /**
      *Class for the MS5837-30BA I2C Pressure and Temperature Sensor
      */

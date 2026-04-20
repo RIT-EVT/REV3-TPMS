@@ -1,9 +1,9 @@
-#ifndef _BOARD_NAME_LED_
-#define _BOARD_NAME_LED_
+#ifndef _TPMS_LED_
+#define _TPMS_LED_
 
 #include <core/io/GPIO.hpp>
 
-namespace BOARD_NAME::dev {
+namespace TPMS::dev {
 
 class LED {
 public:

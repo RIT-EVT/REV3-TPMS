@@ -1,11 +1,11 @@
 #pragma once
 
-namespace BOARD_NAME {
+namespace TPMS {
 
 /**
  * This is an example of a class for a board
  */
-class BOARD_NAME {
+class TPMS {
 public:
 private:
 };

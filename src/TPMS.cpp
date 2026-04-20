@@ -1,3 +1,3 @@
-#include <BOARD_NAME.hpp>
+#include <TPMS.hpp>
 
-namespace BOARD_NAME {}
+namespace TPMS {}
