@@ -9,7 +9,7 @@
 #include <core/io/I2C.hpp>
 #include <core/utils/log.hpp>
 
-namespace IO = core::io;
+namespace io = core::io;
 namespace log = core::log;
 
 namespace TPMS::dev {
@@ -19,7 +19,7 @@ namespace TPMS::dev {
     class MS5837 {
     public:
         // Constructor
-        MS5837(IO::I2C& i2c_bus);
+        MS5837(io::I2C& i2c_bus);
 
         /**
          * Get the pressure from the MS5837
@@ -36,6 +36,8 @@ namespace TPMS::dev {
     private:
         // 7-bit address for the I2C
         static constexpr uint8_t I2C_ADDRESS = 0x76 << 1;
+        io::I2C& i2c;
+        uint16_t calibrationData[7]{};
     };
 }
 
