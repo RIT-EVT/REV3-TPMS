@@ -61,8 +61,6 @@ float MS5837::readPressure() {
 
     // Second order compensation for cold temperatures
     if (TEMP <= 2000) {
-        int64_t Ti = 3 * ((int64_t)dT * dT) >> 33;
-        TEMP -= Ti;
         int64_t OFF2 = 3 * ((TEMP - 2000) * (TEMP - 2000)) >> 1;
         int64_t SENS2 = 5 * ((TEMP - 2000) * (TEMP - 2000)) >> 3;
 
@@ -84,6 +82,7 @@ float MS5837::readPressure() {
  * @return temperature in degrees Celsius
  */
 float MS5837::readTemperature() {
+    //int64_t Ti = 3 * ((int64_t)dT * dT) >> 33;
     return 0.0;
 }
 } // namespace TPMS::dev

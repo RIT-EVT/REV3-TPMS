@@ -1,14 +1,16 @@
 /**
- * This is a basic sample of using the UART module. The program provides a
- * basic echo functionality where the uart will write back whatever the user
- * enters.
+ * Basic main to get pressure reading from the MS583730BA01
  */
+
+#include "dev/MS583730BA01_50.hpp"
 
 #include <core/io/UART.hpp>
 #include <core/io/pin.hpp>
 #include <core/manager.hpp>
+#include <core/utils/time.hpp>
 
 namespace io = core::io;
+namespace time = core::time;
 
 int main() {
     // Initialize system
@@ -18,15 +20,16 @@ int main() {
     io::UART& uart = io::getUART<io::Pin::UART_TX, io::Pin::UART_RX>(9600);
 
     // Setup I2C
+    io::I2C& i2c = io::getI2C<io::Pin::PB_6, io::Pin::PB_7>();
 
-
-    // String to store user input
-    char buf[100];
+    // Setup MS5837
+    TPMS::dev::MS5837 pressureSensor = TPMS::dev::MS5837(i2c);
 
     while (1) {
+        float pressure = pressureSensor.readPressure();
         // Read user input
-        uart.printf("Enter message: ");
-        uart.gets(buf, 100);
-        uart.printf("\n\recho: %s\n\r", buf);
+        uart.printf("Pressure(mbar): %.2f\r\n", pressure);
+        // wait 500 ms
+        time::wait(500);
     }
 }
