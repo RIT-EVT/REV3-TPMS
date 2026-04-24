@@ -27,13 +27,13 @@ namespace TPMS::dev {
          * Get the pressure from the MS5837
          * @return pressure in mbar
          */
-        float readPressure();
+        uint32_t readPressure();
 
         /**
          * Gets the temperature from the MS5837
          * @return temperature in degrees Celsius
          */
-        float readTemperature();
+        uint32_t readTemperature();
 
     private:
         // 7-bit address for the I2C

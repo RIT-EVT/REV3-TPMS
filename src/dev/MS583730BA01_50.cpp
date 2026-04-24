@@ -28,7 +28,7 @@ bool MS5837::init() {
  * Get the pressure from the MS5837
  * @return pressure in mbar
  */
-float MS5837::readPressure() {
+uint32_t MS5837::readPressure() {
     uint8_t buffer[3];
     uint8_t adcReadCmd = 0x00;
 
@@ -76,7 +76,7 @@ float MS5837::readPressure() {
         SENS -= SENS2;
     }
     int32_t P = ((((int64_t)D1 * SENS) >> 21) - OFF) >> 13;
-    return P / 10.0f; // Return final pressure in mbar
+    return (uint32_t) P; // Return final pressure in mbar
 }
 
 /**
@@ -84,7 +84,7 @@ float MS5837::readPressure() {
  * idk if we need this currently not implemented
  * @return temperature in degrees Celsius
  */
-float MS5837::readTemperature() {
+uint32_t MS5837::readTemperature() {
     //int64_t Ti = 3 * ((int64_t)dT * dT) >> 33;
     return 0.0;
 }
