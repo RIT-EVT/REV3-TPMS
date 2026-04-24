@@ -8,9 +8,6 @@ namespace io = core::io;
 namespace TPMS::dev {
 
 MS5837::MS5837(io::I2C& i2c_bus) : i2c(i2c_bus){
-}
-
-bool MS5837::init() {
     uint8_t resetCmd = 0x1E; // Transmit resetCmd to I2C_ADDRESS
     i2c.write(I2C_ADDRESS,&resetCmd, 1);
     time::wait(200);
@@ -22,6 +19,9 @@ bool MS5837::init() {
         i2c.read(I2C_ADDRESS, buffer, 2); // Receive two bytes into buffer
         calibrationData[i] = (buffer[0] << 8) | buffer[1];
     }
+}
+
+bool MS5837::init() {
 }
 
 /**
