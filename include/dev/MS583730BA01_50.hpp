@@ -21,6 +21,8 @@ namespace TPMS::dev {
         // Constructor
         MS5837(io::I2C& i2c_bus);
 
+        bool init();
+
         /**
          * Get the pressure from the MS5837
          * @return pressure in mbar

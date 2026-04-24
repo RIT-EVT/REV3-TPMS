@@ -8,6 +8,9 @@ namespace io = core::io;
 namespace TPMS::dev {
 
 MS5837::MS5837(io::I2C& i2c_bus) : i2c(i2c_bus){
+}
+
+bool MS5837::init() {
     uint8_t resetCmd = 0x1E; // Transmit resetCmd to I2C_ADDRESS
     i2c.write(I2C_ADDRESS,&resetCmd, 1);
     time::wait(200);
@@ -22,9 +25,9 @@ MS5837::MS5837(io::I2C& i2c_bus) : i2c(i2c_bus){
 }
 
 /**
-* Get the pressure from the MS5837
-* @return pressure in mbar
-*/
+ * Get the pressure from the MS5837
+ * @return pressure in mbar
+ */
 float MS5837::readPressure() {
     uint8_t buffer[3];
     uint8_t adcReadCmd = 0x00;

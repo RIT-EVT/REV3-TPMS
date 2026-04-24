@@ -17,13 +17,15 @@ int main() {
     core::platform::init();
 
     // Setup UART
-    io::UART& uart = io::getUART<io::Pin::UART_TX, io::Pin::UART_RX>(9600);
+    io::UART& uart = io::getUART<io::Pin::PA_2, io::Pin::PA_3>(9600);
 
     // Setup I2C
     io::I2C& i2c = io::getI2C<io::Pin::PB_6, io::Pin::PB_7>();
 
     // Setup MS5837
     TPMS::dev::MS5837 pressureSensor = TPMS::dev::MS5837(i2c);
+
+    uart.printf("hi\r\n");
 
     while (1) {
         float pressure = pressureSensor.readPressure();
