@@ -26,12 +26,13 @@ int main() {
     // Setup MS5837
     TPMS::dev::MS5837 pressureSensor = TPMS::dev::MS5837(i2c);
 
-    uart.printf("hi\r\n");
-
     while (1) {
         uint32_t pressure = pressureSensor.readPressure();
         // Read user input
-        uart.printf("Pressure(mbar): %d.%d\r\n", (int) (pressure /10), (int) (pressure % 10));
+        for (int i = 0; i < 7; i++) {
+            uart.printf("C%d Cal: %d\r\n", i, pressureSensor.calibrationData[i]);
+        }
+        //uart.printf("Pressure(mbar): %d.%d\r\n", (int) (pressure /10), (int) (pressure % 10));
         // wait 500 ms
         time::wait(500);
     }

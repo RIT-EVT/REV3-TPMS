@@ -34,12 +34,14 @@ namespace TPMS::dev {
          * @return temperature in degrees Celsius
          */
         uint32_t readTemperature();
+        uint16_t calibrationData[7]{};
 
     private:
         // 7-bit address for the I2C
+
         static constexpr uint8_t I2C_ADDRESS = 0x76 << 1;
         io::I2C& i2c;
-        uint16_t calibrationData[7]{};
+
     };
 }
 
